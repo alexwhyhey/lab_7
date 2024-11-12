@@ -31,7 +31,7 @@ namespace Байбаков_Автосервис
         {
             InitializeComponent();
 
-            var currentServices = Baybakov_AutoserviceEntities.GetContext().Service.ToList();
+            var currentServices = Baybakov_AutoserviceEntities1.GetContext().Service.ToList();
             ServiceListView.ItemsSource = currentServices;
 
             ComboType.SelectedIndex = 0;
@@ -124,7 +124,7 @@ namespace Байбаков_Автосервис
 
         private void UpdateServices()
         {
-            var currentServices = Baybakov_AutoserviceEntities.GetContext().Service.ToList();
+            var currentServices = Baybakov_AutoserviceEntities1.GetContext().Service.ToList();
 
             switch(ComboType.SelectedIndex)
             {
@@ -207,8 +207,8 @@ namespace Байбаков_Автосервис
         {
             if (Visibility == Visibility.Visible)
             {
-                Baybakov_AutoserviceEntities.GetContext().ChangeTracker.Entries().ToList().ForEach(p => p.Reload());
-                ServiceListView.ItemsSource = Baybakov_AutoserviceEntities.GetContext().Service.ToList();
+                Baybakov_AutoserviceEntities1.GetContext().ChangeTracker.Entries().ToList().ForEach(p => p.Reload());
+                ServiceListView.ItemsSource = Baybakov_AutoserviceEntities1.GetContext().Service.ToList();
                 UpdateServices();
             }
         }
@@ -217,7 +217,7 @@ namespace Байбаков_Автосервис
         {
             var currentService = (sender as Button).DataContext as Service;
 
-            var currentClientServices = Baybakov_AutoserviceEntities.GetContext().ClientService.ToList();
+            var currentClientServices = Baybakov_AutoserviceEntities1.GetContext().ClientService.ToList();
             currentClientServices = currentClientServices.Where(p => p.ServiceID == currentService.ID).ToList();
 
 
@@ -232,10 +232,10 @@ namespace Байбаков_Автосервис
                 {
                     try
                     {
-                        Baybakov_AutoserviceEntities.GetContext().Service.Remove(currentService);
-                        Baybakov_AutoserviceEntities.GetContext().SaveChanges();
+                        Baybakov_AutoserviceEntities1.GetContext().Service.Remove(currentService);
+                        Baybakov_AutoserviceEntities1.GetContext().SaveChanges();
 
-                        ServiceListView.ItemsSource = Baybakov_AutoserviceEntities.GetContext().Service.ToList();
+                        ServiceListView.ItemsSource = Baybakov_AutoserviceEntities1.GetContext().Service.ToList();
 
                         UpdateServices();
                     }
@@ -260,6 +260,11 @@ namespace Байбаков_Автосервис
         private void PageListBox_MouseUp(object sender, MouseButtonEventArgs e)
         {
             ChangePage(0, Convert.ToInt32(PageListBox.SelectedItem.ToString()) - 1);
+        }
+
+        private void SignUpButton_Click(object sender, RoutedEventArgs e)
+        {
+            Manager.MainFrame.Navigate(new SignUpPage((sender as Button).DataContext as Service));
         }
     }
 }

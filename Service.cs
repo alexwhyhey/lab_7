@@ -17,7 +17,7 @@ namespace Байбаков_Автосервис
         public int ID { get; set; }
         public string Title { get; set; }
         public string MainImagePath { get; set; }
-        public string Duration { get; set; }
+        public int Duration { get; set; }
         public decimal Cost { get; set; }
         public Nullable<double> Discount { get; set; }
 
@@ -39,7 +39,6 @@ namespace Байбаков_Автосервис
                 this.Discount = Convert.ToDouble(value) / 100;
             }
         }
-
         public string Description { get; set; }
     }
 }

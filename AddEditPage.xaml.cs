@@ -45,7 +45,7 @@ namespace Байбаков_Автосервис
             if (_currentService.Discount < 0 || _currentService.Discount > 100 || string.IsNullOrWhiteSpace(_currentService.Discount.ToString()))
                 errors.AppendLine("Правильно укажите скидку услуги");
 
-            if (string.IsNullOrWhiteSpace(_currentService.Duration))
+            if (string.IsNullOrWhiteSpace(_currentService.Duration.ToString()))
                 errors.AppendLine("Укажите длительность услуги");
 
 
@@ -57,12 +57,12 @@ namespace Байбаков_Автосервис
 
             if (_currentService.ID == 0)
             {
-                Baybakov_AutoserviceEntities.GetContext().Service.Add(_currentService);
+                Baybakov_AutoserviceEntities1.GetContext().Service.Add(_currentService);
             }
 
             try
             {
-                Baybakov_AutoserviceEntities.GetContext().SaveChanges();
+                Baybakov_AutoserviceEntities1.GetContext().SaveChanges();
                 MessageBox.Show("информация сохранена");
                 Manager.MainFrame.GoBack();
             }

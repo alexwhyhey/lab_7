@@ -13,22 +13,22 @@ namespace Байбаков_Автосервис
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class Baybakov_AutoserviceEntities : DbContext
+    public partial class Baybakov_AutoserviceEntities1 : DbContext
     {
-        private static Baybakov_AutoserviceEntities _context;
+        private static Baybakov_AutoserviceEntities1 _context;
 
-        public static Baybakov_AutoserviceEntities GetContext()
+        public static Baybakov_AutoserviceEntities1 GetContext()
         {
             if (_context == null)
             {
-                _context = new Baybakov_AutoserviceEntities();
+                _context = new Baybakov_AutoserviceEntities1();
             }
 
             return _context;
         }
 
-        public Baybakov_AutoserviceEntities()
-            : base("name=Baybakov_AutoserviceEntities")
+        public Baybakov_AutoserviceEntities1()
+            : base("name=Baybakov_AutoserviceEntities1")
         {
         }
     
