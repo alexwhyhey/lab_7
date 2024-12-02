@@ -42,11 +42,15 @@ namespace Байбаков_Автосервис
             if (_currentService.Cost <= 0)
                 errors.AppendLine("Укажите стоимость услуги");
 
+            
+
             if (_currentService.Discount < 0 || _currentService.Discount > 100 || string.IsNullOrWhiteSpace(_currentService.Discount.ToString()))
                 errors.AppendLine("Правильно укажите скидку услуги");
 
             if (string.IsNullOrWhiteSpace(_currentService.Duration.ToString()))
                 errors.AppendLine("Укажите длительность услуги");
+            else if (_currentService.Duration < 0 || _currentService.Duration > 240)
+                errors.AppendLine("Длительность должна быть в диапазоне от 0 до 240");
 
 
             if (errors.Length > 0)
